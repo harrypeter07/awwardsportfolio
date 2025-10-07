@@ -39,7 +39,7 @@ const About = () => {
         />
 
         <div className="mt-6 about-subtext md:mt-10">
-          <p>Hi, I’m Aryan — a front‑end developer focused on motion, 3D, and delightful UX.</p>
+          <p>Hi, I’m Hassan — a front‑end developer focused on motion, 3D, and delightful UX.</p>
           <p className="text-gray-500">
             I craft fast, accessible interfaces with React, GSAP, and Tailwind, blending
             performant code with expressive visuals to tell compelling stories on the web.
