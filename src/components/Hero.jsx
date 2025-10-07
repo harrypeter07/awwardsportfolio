@@ -95,6 +95,54 @@ const Hero = () => {
 
   const getVideoSrc = (index) => `videos/hero-${index}.mp4`;
 
+  // Ensure mobile autoplay compatibility (iOS Safari requires playsInline + user gesture fallback)
+  useEffect(() => {
+    const ensureInlineAutoplay = () => {
+      const videos = document.querySelectorAll('#video-frame video');
+      videos.forEach((video) => {
+        try {
+          video.muted = true;
+          // playsInline for iOS Safari
+          video.setAttribute('playsinline', '');
+          // Some engines also look for this property
+          // @ts-ignore - not in standard DOM typings
+          video.playsInline = true;
+        } catch {}
+      });
+    };
+
+    const tryPlayAll = () => {
+      const videos = document.querySelectorAll('#video-frame video');
+      videos.forEach((video) => {
+        try {
+          const playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(() => {});
+          }
+        } catch {}
+      });
+    };
+
+    ensureInlineAutoplay();
+
+    // Attempt to play immediately (muted inline should succeed on most browsers)
+    tryPlayAll();
+
+    // As a fallback, retry on first user interaction
+    const onFirstInteract = () => {
+      tryPlayAll();
+      window.removeEventListener('touchstart', onFirstInteract);
+      window.removeEventListener('click', onFirstInteract);
+    };
+    window.addEventListener('touchstart', onFirstInteract, { once: true });
+    window.addEventListener('click', onFirstInteract, { once: true });
+
+    return () => {
+      window.removeEventListener('touchstart', onFirstInteract);
+      window.removeEventListener('click', onFirstInteract);
+    };
+  }, []);
+
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
@@ -128,6 +176,8 @@ const Hero = () => {
                   className="size-64 origin-center scale-150 object-cover object-center"
                   onLoadedData={handleVideoLoad}
                   onTimeUpdate={handleTimeUpdate}
+                  playsInline
+                  preload="auto"
                 />
               </div>
             </VideoPreview>
@@ -142,6 +192,8 @@ const Hero = () => {
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
             onTimeUpdate={handleTimeUpdate}
+            playsInline
+            preload="auto"
           />
           <video
             src={getVideoSrc(
@@ -153,6 +205,8 @@ const Hero = () => {
             className="absolute left-0 top-0 size-full object-cover object-center"
             onLoadedData={handleVideoLoad}
             onTimeUpdate={handleTimeUpdate}
+            playsInline
+            preload="auto"
           />
         </div>
 
