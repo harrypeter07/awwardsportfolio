@@ -38,7 +38,7 @@ const About = () => {
           containerClass="mt-5 !text-black text-center"
         />
 
-        <div className="about-subtext">
+        <div className="mt-6 about-subtext md:mt-10">
           <p>Hi, I’m Aryan — a front‑end developer focused on motion, 3D, and delightful UX.</p>
           <p className="text-gray-500">
             I craft fast, accessible interfaces with React, GSAP, and Tailwind, blending
