@@ -139,6 +139,32 @@ const Hero = () => {
     };
   }, []);
 
+  // Only play videos when they are in view to conserve battery/network
+  useEffect(() => {
+    const videos = Array.from(document.querySelectorAll('#video-frame video'));
+    if (videos.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+          try {
+            if (entry.isIntersecting) {
+              const p = video.play();
+              if (p && typeof p.catch === 'function') p.catch(() => {});
+            } else {
+              video.pause();
+            }
+          } catch {}
+        });
+      },
+      { root: null, rootMargin: '0px', threshold: 0.2 }
+    );
+
+    videos.forEach((v) => observer.observe(v));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="relative h-dvh w-screen overflow-x-hidden">
       {loading && (
@@ -203,6 +229,7 @@ const Hero = () => {
             onTimeUpdate={handleTimeUpdate}
             playsInline
             preload="metadata"
+            poster="img/entrance.webp"
           />
         </div>
 
