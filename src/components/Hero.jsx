@@ -37,14 +37,10 @@ const Hero = () => {
 
   const handleTimeUpdate = (event) => {
     const videoElement = event.target;
-    const currentSrc = videoElement.currentSrc || "";
-    // Only constrain playback for hero-1.mp4
-    if (currentSrc.includes("hero-1.mp4")) {
-      const duration = videoElement.duration || 0;
-      if (duration > 0 && videoElement.currentTime >= duration / 2) {
-        // Loop the first half
-        videoElement.currentTime = 0;
-      }
+    const duration = videoElement.duration || 0;
+    if (duration > 0 && videoElement.currentTime >= duration / 2) {
+      // Loop the first half for faster perceived loads
+      videoElement.currentTime = 0;
     }
   };
 
@@ -177,7 +173,7 @@ const Hero = () => {
                   onLoadedData={handleVideoLoad}
                   onTimeUpdate={handleTimeUpdate}
                   playsInline
-                  preload="auto"
+                  preload="metadata"
                 />
               </div>
             </VideoPreview>
@@ -193,7 +189,7 @@ const Hero = () => {
             onLoadedData={handleVideoLoad}
             onTimeUpdate={handleTimeUpdate}
             playsInline
-            preload="auto"
+            preload="metadata"
           />
           <video
             src={getVideoSrc(
@@ -206,7 +202,7 @@ const Hero = () => {
             onLoadedData={handleVideoLoad}
             onTimeUpdate={handleTimeUpdate}
             playsInline
-            preload="auto"
+            preload="metadata"
           />
         </div>
 
