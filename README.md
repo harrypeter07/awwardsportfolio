@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
   </div>
 
-  <h3 align="center">An Awwwards Winning Website</h3>
+  <h3 align="center">Hassan's Portfolio (Awwwards‑style)</h3>
 
    <div align="center">
      Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@javascriptmastery/videos" target="_blank"><b>JavaScript Mastery</b></a> YouTube. Join the JSM family!
@@ -43,7 +43,7 @@ If you prefer visual learning, this is the perfect resource for you. Follow our 
 
 ## <a name="introduction">🤖 Introduction</a>
 
-Build a visually captivating website inspired by **[Zentry](https://zentry.com/)**, featuring scroll-triggered animations, geometric transitions, and engaging video storytelling. Learn how to deliver a luxurious, modern feel, focusing on engaging UI/UX and smooth responsiveness, capturing the essence of what makes an Awwwards winner.
+This is Hassan's personal portfolio site, adapted from an Awwwards‑style experience with cinematic hero video, GSAP motion, and geometric transitions. It showcases projects, journey, and contact, while retaining the original immersive visuals and performance‑minded implementation.
 
 If you're getting started and need assistance or face any bugs, join our active Discord community with over **47k+** members. It's a place where people help each other out.
 
@@ -86,8 +86,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/adrianhajdin/award-winning-website.git
-cd award-winning-website
+git clone YOUR_REPO_URL_HERE
+cd awwardsportfolio
 ```
 
 **Installation**
@@ -445,3 +445,11 @@ detailed explanations, cool features, and exercises to boost your skills. Give i
 <a href="https://jsmastery.pro/next15" target="_blank">
    <img src="https://github.com/user-attachments/assets/b8760e69-1f81-4a71-9108-ceeb1de36741" alt="Project Banner">
 </a>
+
+---
+
+## 🙏 Credits
+
+- Portfolio adaptation by **Hassan**.
+- Original repository and tutorial by **Adrian Hajdin / JavaScript Mastery** — massive thanks for the excellent teaching and starter code.
+- Design inspiration and some assets credit: **[Zentry](https://zentry.com/)** (educational use only).
