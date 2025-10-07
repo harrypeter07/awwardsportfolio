@@ -30,19 +30,19 @@ const About = () => {
     <div id="about" className="min-h-screen w-screen">
       <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
         <p className="font-general text-sm uppercase md:text-[10px]">
-          Welcome to Zentry
+          About Me
         </p>
 
         <AnimatedTitle
-          title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
+          title="Designing and buil<b>d</b>ing immersive <br /> inter<b>a</b>ctive web experien<b>c</b>es"
           containerClass="mt-5 !text-black text-center"
         />
 
         <div className="about-subtext">
-          <p>The Game of Games begins—your life, now an epic MMORPG</p>
+          <p>Hi, I’m Aryan — a front‑end developer focused on motion, 3D, and delightful UX.</p>
           <p className="text-gray-500">
-            Zentry unites every player from countless games and platforms, both
-            digital and physical, into a unified Play Economy
+            I craft fast, accessible interfaces with React, GSAP, and Tailwind, blending
+            performant code with expressive visuals to tell compelling stories on the web.
           </p>
         </div>
       </div>

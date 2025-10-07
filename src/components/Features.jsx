@@ -99,16 +99,13 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 const Features = () => (
-  <section className="bg-black pb-52">
+  <section id="projects" className="bg-black pb-52">
     <div className="container mx-auto px-3 md:px-10">
       <div className="px-5 py-32">
-        <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer
-        </p>
+        <p className="font-circular-web text-lg text-blue-50">Selected Projects</p>
         <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a rich and ever-expanding universe where a vibrant
-          array of products converge into an interconnected overlay experience
-          on your world.
+          A curated set of interactive builds exploring motion, micro‑interactions,
+          and performance across the modern web.
         </p>
       </div>
 
@@ -117,10 +114,10 @@ const Features = () => (
           src="videos/feature-1.mp4"
           title={
             <>
-              radia<b>n</b>t
+              portf<b>o</b>lio site
             </>
           }
-          description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
+          description="A cinematic landing with layered video, scroll‑triggered motion, and masked interactions."
           isComingSoon
         />
       </BentoTilt>
@@ -131,10 +128,10 @@ const Features = () => (
             src="videos/feature-2.mp4"
             title={
               <>
-                zig<b>m</b>a
+                gs<b>a</b>p scenes
               </>
             }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
+            description="Reusable motion primitives for parallax, clip‑paths, and reveal sequences."
             isComingSoon
           />
         </BentoTilt>
@@ -144,10 +141,10 @@ const Features = () => (
             src="videos/feature-3.mp4"
             title={
               <>
-                n<b>e</b>xus
+                react <b>u</b>i
               </>
             }
-            description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
+            description="Component system with accessible patterns and animated micro‑states."
             isComingSoon
           />
         </BentoTilt>
@@ -157,10 +154,10 @@ const Features = () => (
             src="videos/feature-4.mp4"
             title={
               <>
-                az<b>u</b>l
+                perf<b>o</b>rmance
               </>
             }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
+            description="Optimizing bundles, preloading media, and tuning scroll performance."
             isComingSoon
           />
         </BentoTilt>
@@ -168,7 +165,7 @@ const Features = () => (
         <BentoTilt className="bento-tilt_2">
           <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
             <h1 className="bento-title special-font max-w-64 text-black">
-              M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
+              M<b>o</b>re pr<b>o</b>jects c<b>o</b>ming s<b>o</b>on.
             </h1>
 
             <TiLocationArrow className="m-5 scale-[5] self-end" />
