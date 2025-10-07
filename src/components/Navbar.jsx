@@ -20,6 +20,7 @@ const NavBar = () => {
   const { y: currentScrollY } = useWindowScroll();
   const [isNavVisible, setIsNavVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   // Toggle audio and visual indicator
   const toggleAudioIndicator = () => {
@@ -37,22 +38,35 @@ const NavBar = () => {
   }, [isAudioPlaying]);
 
   useEffect(() => {
+    const updateIsMobile = () => setIsMobile(window.innerWidth < 768);
+    updateIsMobile();
+    window.addEventListener("resize", updateIsMobile);
+    return () => window.removeEventListener("resize", updateIsMobile);
+  }, []);
+
+  useEffect(() => {
+    if (!navContainerRef.current) return;
+
+    if (isMobile) {
+      // Always show navbar on mobile and avoid scroll-hide
+      setIsNavVisible(true);
+      navContainerRef.current.classList.remove("floating-nav");
+      return;
+    }
+
     if (currentScrollY === 0) {
-      // Topmost position: show navbar without floating-nav
       setIsNavVisible(true);
       navContainerRef.current.classList.remove("floating-nav");
     } else if (currentScrollY > lastScrollY) {
-      // Scrolling down: hide navbar and apply floating-nav
       setIsNavVisible(false);
       navContainerRef.current.classList.add("floating-nav");
     } else if (currentScrollY < lastScrollY) {
-      // Scrolling up: show navbar with floating-nav
       setIsNavVisible(true);
       navContainerRef.current.classList.add("floating-nav");
     }
 
     setLastScrollY(currentScrollY);
-  }, [currentScrollY, lastScrollY]);
+  }, [currentScrollY, lastScrollY, isMobile]);
 
   useEffect(() => {
     gsap.to(navContainerRef.current, {
