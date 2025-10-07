@@ -35,6 +35,19 @@ const Hero = () => {
     setCurrentIndex((prevIndex) => (prevIndex % totalVideos) + 1);
   };
 
+  const handleTimeUpdate = (event) => {
+    const videoElement = event.target;
+    const currentSrc = videoElement.currentSrc || "";
+    // Only constrain playback for hero-1.mp4
+    if (currentSrc.includes("hero-1.mp4")) {
+      const duration = videoElement.duration || 0;
+      if (duration > 0 && videoElement.currentTime >= duration / 2) {
+        // Loop the first half
+        videoElement.currentTime = 0;
+      }
+    }
+  };
+
   useGSAP(
     () => {
       if (hasClicked) {
@@ -114,6 +127,7 @@ const Hero = () => {
                   id="current-video"
                   className="size-64 origin-center scale-150 object-cover object-center"
                   onLoadedData={handleVideoLoad}
+                  onTimeUpdate={handleTimeUpdate}
                 />
               </div>
             </VideoPreview>
@@ -127,6 +141,7 @@ const Hero = () => {
             id="next-video"
             className="absolute-center invisible absolute z-20 size-64 object-cover object-center"
             onLoadedData={handleVideoLoad}
+            onTimeUpdate={handleTimeUpdate}
           />
           <video
             src={getVideoSrc(
@@ -137,6 +152,7 @@ const Hero = () => {
             muted
             className="absolute left-0 top-0 size-full object-cover object-center"
             onLoadedData={handleVideoLoad}
+            onTimeUpdate={handleTimeUpdate}
           />
         </div>
 
@@ -145,7 +161,7 @@ const Hero = () => {
         </h1>
 
         <div className="absolute left-0 top-0 z-40 size-full">
-          <div className="mt-24 px-5 sm:px-10">
+          <div className="mt-40 sm:mt-56 px-5 sm:px-10">
             <h1 className="special-font hero-heading text-blue-100">
               Hi, I&#39;m <b>A</b>ryan
             </h1>
